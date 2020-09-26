@@ -15,14 +15,14 @@ namespace Team_Up.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Reach out, create or join a team and start developing together!";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Feel free to get in touch with any questions you have.";
 
             return View();
         }
