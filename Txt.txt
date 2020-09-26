@@ -1,0 +1,92 @@
+Roles:
+	User
+		Id: Int
+		FirstName: String
+		LastName: String
+		Image: String
+		Birthday: Date
+		Email: String
+		PhoneNumber: String
+		Password: String
+		Resume: Resume
+		Notifications: Array(Notification)
+		PendingApplications: Array(Application)
+		MyTeams: Array(Team)
+		
+		
+Models:
+	Team
+		Id: Int
+		Name: String
+		Description: String
+		Members: Array(User)
+		Roles Needed: Array(RolesNeeded)
+		Admin(s): Array(User)
+		DueDate: Date
+		TeamChat: Array(ChatMessage)
+		
+	Resume
+		Id: Int
+		Links: Array<Link>
+		Education: String
+		Experience: String
+		Technologies: Array(Technology)
+		HobbiesInterests: String
+	
+	Technology
+		Id: Int
+		Name: String
+		Grade: Real
+		Comment: String
+		
+	Notification
+		Id: Int
+		Date: Date
+		From: User
+		Recievers: Arary(User)
+		NotificationMessage: String
+		Seen: Boolean
+
+	Application
+		Id: Int
+		Status: String('accepted', 'denied', 'pending')
+		DateSent: Date
+		From: User
+		To: Team
+		For: Role
+		Description: String
+	
+		
+	RolesNeeded:
+		Id: Int
+		Name: String
+		Description: String
+		Filled: Boolean
+		FilledBy: User
+
+	Message:
+		Id: Int
+		TimeSent: Date
+		MessageBody: String
+		SentBy: User
+
+	Link:
+		Id: Int
+		Name: String
+		URL: String
+
+		
+User Stories:
+	Only home page explaining what's the website about will be visible to not logged in users
+	
+	Registering will require a little more time, because then it will be when the users will fill their resume and skills
+	
+	Once logged in there you will be shown the lists where you can apply if you want to join the team
+	
+	User should be able to search for specific roles
+	
+	User will be shown a list of teams
+	
+	If the user wants to create his own team he will be able to do and he will be team admin, but the admin can change other admins
+	
+	Team page will have all the necesery infomartion, and maybe a messaging system only for the team

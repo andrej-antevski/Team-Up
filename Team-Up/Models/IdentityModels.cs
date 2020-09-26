@@ -29,6 +29,7 @@ namespace Team_Up.Models
         [Display(Name = "Profile Picture")]
         public string Image { get; set; }
         [Display(Name = "Name")]
+
         public string FullName()
         {
             return FirstName + " " + LastName;
