@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace Team_Up.Models
 {
@@ -62,6 +64,22 @@ namespace Team_Up.Models
         public bool RememberMe { get; set; }
     }
 
+    public class ValidBirthday : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            value = (DateTime)value;
+            // This assumes inclusivity, i.e. exactly six years ago is okay
+            if (DateTime.Now.AddYears(-110).CompareTo(value) <= 0 && DateTime.Now.AddYears(-16).CompareTo(value) >= 0)
+            {
+                return ValidationResult.Success;
+            }
+            else
+            {
+                return new ValidationResult("Please enter your real birthday");
+            }
+        }
+    }
     public class RegisterViewModel
     {
         [Required]
@@ -79,6 +97,22 @@ namespace Team_Up.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [ValidBirthday]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        public DateTime Birthday { get; set; }
+
+        [Display(Name = "Profile Picture")]
+        public HttpPostedFileBase ImageFile { get; set; }
     }
 
     public class ResetPasswordViewModel
