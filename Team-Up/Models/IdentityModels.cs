@@ -30,6 +30,7 @@ namespace Team_Up.Models
         public string Image { get; set; }
         [Display(Name = "Name")]
 
+        
         public string FullName()
         {
             return FirstName + " " + LastName;
