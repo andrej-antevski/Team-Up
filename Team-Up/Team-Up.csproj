@@ -178,6 +178,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009261533204_initial migration.cs" />
+    <Compile Include="Migrations\202009261533204_initial migration.designer.cs">
+      <DependentUpon>202009261533204_initial migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009261539340_fixed user birthday range.cs" />
+    <Compile Include="Migrations\202009261539340_fixed user birthday range.designer.cs">
+      <DependentUpon>202009261539340_fixed user birthday range.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Application.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -367,6 +376,14 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202009261533204_initial migration.resx">
+      <DependentUpon>202009261533204_initial migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009261539340_fixed user birthday range.resx">
+      <DependentUpon>202009261539340_fixed user birthday range.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

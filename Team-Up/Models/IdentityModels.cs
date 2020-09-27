@@ -22,9 +22,7 @@ namespace Team_Up.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         [Required]
-        [DataType(DataType.DateTime)]
-        [Range(typeof(DateTime), "1/2/2004", "3/4/2004",
-        ErrorMessage = "Value for {0} must be between {1} and {2}")]
+        [DataType(DataType.Date)]
         public DateTime Birthday{ get; set; }        
         [Display(Name = "Profile Picture")]
         public string Image { get; set; }

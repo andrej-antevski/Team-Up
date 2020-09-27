@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -151,7 +152,23 @@ namespace Team_Up.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                string ImagePath;
+                if (model.ImageFile != null)
+                {
+                    string FileName = string.Format(@"{0}", Guid.NewGuid());
+                    string FileExtension = Path.GetExtension(model.ImageFile.FileName);
+
+                    string _FileName = FileName + FileExtension;
+                    ImagePath = Path.Combine(Server.MapPath("~/Assets/Images/ProfileImages/"), _FileName);
+                    model.ImageFile.SaveAs(ImagePath);
+                }
+                else
+                {
+                    ImagePath = "~/Assets/Images/ProfileImages/DefaultProfile.jpg";
+                }
+                var db = new ApplicationDbContext();
+                db.SaveChanges();
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, Birthday = model.Birthday, LastName = model.LastName, Image = ImagePath };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
