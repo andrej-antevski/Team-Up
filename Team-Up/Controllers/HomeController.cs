@@ -26,5 +26,9 @@ namespace Team_Up.Controllers
 
             return View();
         }
+        public ActionResult TermsOfService()
+        {
+            return View();
+        }
     }
 }

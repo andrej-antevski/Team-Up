@@ -12,10 +12,12 @@
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-gradient-primary">
         <div class="container">
             <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                @Html.ActionLink("Team-Up", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <img src="~/Assets/Images/Logos/logo.png" width="40" style="position:relative; bottom: 4px;"/>
+                @Html.ActionLink("Team Up", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav mr-auto">
